@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import StyledComponentsRegistry from "./providers";
 import localFont from "next/font/local";
+import { ReactQueryClient } from "./ReactQueryClient";
+import StyledComponentsRegistry from "./providers";
 
 const getSchwifty = localFont({
   src: "./assets/get_schwifty.ttf",
 });
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,9 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <StyledComponentsRegistry>
-        <body className={getSchwifty.className}>{children}</body>
-      </StyledComponentsRegistry>
+      <ReactQueryClient>
+        <StyledComponentsRegistry>
+          <body className={getSchwifty.className}>{children}</body>
+        </StyledComponentsRegistry>
+      </ReactQueryClient>
     </html>
   );
 }
