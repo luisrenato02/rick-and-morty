@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   h1 {
     color: #1da0ba;
     font-size: 3rem;
-    text-shadow: 1px 1px #63cc45, -1px -1px #63cc45, 1px -1px #63cc45,
+    text-shadow: 1px 1px #63cc45, -1px -1px #63cc45, 1px -1px #1da0ba,
       -1px 1px #63cc45;
 
     @media (max-width: 768px) {

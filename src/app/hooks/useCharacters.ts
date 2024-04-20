@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAxiosContext } from "./useAxios";
-import next from "next";
 
 export const useCharacters = (page: string) => {
   const axios = useAxiosContext("character");
