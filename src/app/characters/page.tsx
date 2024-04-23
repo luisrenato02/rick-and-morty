@@ -6,11 +6,10 @@ import { CardCharacter } from "../Components/CardCharacter";
 import { Character } from "../interfaces/character";
 import * as S from "./styles";
 import LoadingScreen from "../Components/Loader";
-import { Modal } from "../Components/Modal";
 
 export default function Characters() {
   const [page, setPage] = useState(`https://rickandmortyapi.com/api/character`);
-  const [openModal, setOpenModal] = useState(false);
+
   const { getCharacters, nextPage, prevPage } = useCharacters(page);
 
   const { data, isLoading } = useQuery({
@@ -46,10 +45,7 @@ export default function Characters() {
         <S.GroupCards>
           {data &&
             data.results.map((character: Character) => (
-              <S.Box
-                key={character.id}
-                onClick={() => setOpenModal((prev) => !prev)}
-              >
+              <S.Box key={character.id}>
                 <CardCharacter character={character} />
               </S.Box>
             ))}
@@ -62,7 +58,6 @@ export default function Characters() {
             Next
           </S.Button>
         </S.GroupButtons>
-        <Modal open={openModal} onClose={() => setOpenModal(false)} />
       </S.Wrapper>
     </>
   );

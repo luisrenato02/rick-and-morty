@@ -73,3 +73,25 @@ export const StyledImage = styled(Image)`
   height: 25px;
   background-color: transparent;
 `;
+
+export const MoreInfo = styled.div`
+  background-color: transparent;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+
+  p {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1da0ba;
+    border-radius: 5px;
+    color: #f5f5f5;
+  }
+  :hover {
+    background-color: #1c1f2b;
+    text-decoration: underline;
+  }
+`;
