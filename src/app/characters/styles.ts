@@ -1,7 +1,20 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 0rem 5rem 5rem 5rem;
+`;
+export const Title = styled.div`
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: #f5f5f5;
+  }
 `;
 export const GroupCards = styled.div`
   display: grid;
