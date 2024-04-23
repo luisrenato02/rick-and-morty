@@ -6,6 +6,8 @@ import { CardCharacter } from "../Components/CardCharacter";
 import { Character } from "../interfaces/character";
 import * as S from "./styles";
 import LoadingScreen from "../Components/Loader";
+import { BtnPrevNext } from "../Components/BtnPrevNext";
+import { Title } from "../Components/Titles";
 
 export default function Characters() {
   const [page, setPage] = useState(`https://rickandmortyapi.com/api/character`);
@@ -16,17 +18,11 @@ export default function Characters() {
     queryKey: [page],
     queryFn: () => getCharacters(),
   });
-
   const pageNumber = (url: string) => {
-    // Encontra a posição do caractere "=" na string
     var indiceIgual = url.indexOf("=");
-
-    // Verifica se o caractere "=" foi encontrado na string
     if (indiceIgual !== -1) {
-      // Retorna a substring começando após o caractere "="
       return url.substring(indiceIgual + 1);
     } else {
-      // Retorna uma string vazia se o caractere "=" não for encontrado
       return "";
     }
   };
@@ -36,12 +32,11 @@ export default function Characters() {
   ) : (
     <>
       <S.Wrapper>
-        <S.Title>
-          <h1>CHARACTERS</h1>
-          <h1>
-            PAGE {pageNumber(page)} FROM {data.info.pages}
-          </h1>
-        </S.Title>
+        <Title
+          title="Characters"
+          page={pageNumber(page)}
+          totalpage={String(data.info.pages)}
+        />
         <S.GroupCards>
           {data &&
             data.results.map((character: Character) => (
@@ -50,14 +45,13 @@ export default function Characters() {
               </S.Box>
             ))}
         </S.GroupCards>
-        <S.GroupButtons>
-          <S.Button onClick={() => prevPage && setPage(prevPage)}>
-            Prev
-          </S.Button>
-          <S.Button onClick={() => nextPage && setPage(nextPage)}>
-            Next
-          </S.Button>
-        </S.GroupButtons>
+        <BtnPrevNext
+          prevPage={prevPage}
+          nextPage={nextPage}
+          setPage={setPage}
+          page={pageNumber(page)}
+          totalPage={String(data.info.pages)}
+        />
       </S.Wrapper>
     </>
   );
