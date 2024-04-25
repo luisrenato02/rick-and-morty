@@ -80,6 +80,8 @@ export const MoreInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 5px;
+  overflow-y: auto;
+  max-height: 200px;
 
   p {
     padding: 5px;

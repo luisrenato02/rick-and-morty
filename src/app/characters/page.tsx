@@ -27,7 +27,6 @@ export default function Characters() {
       return "";
     }
   };
-
   return isLoading ? (
     <LoadingScreen />
   ) : (
@@ -37,12 +36,12 @@ export default function Characters() {
         <Title
           title="Characters"
           page={pageNumber(page)}
-          totalpage={String(data.info.pages)}
+          totalpage={String(data?.info?.pages) ?? "0"}
         />
         <S.GroupCards>
           {data &&
             data.results.map((character: Character) => (
-              <S.Box key={character.id}>
+              <S.Box key={character?.id}>
                 <CardCharacter character={character} />
               </S.Box>
             ))}
@@ -52,7 +51,7 @@ export default function Characters() {
           nextPage={nextPage}
           setPage={setPage}
           page={pageNumber(page)}
-          totalPage={String(data.info.pages)}
+          totalPage={String(data?.info?.pages)}
         />
       </S.Wrapper>
     </>

@@ -33,3 +33,40 @@ export const Card = styled.div`
   font-family: ${geo_regular.style.fontFamily};
   font-size: 20px;
 `;
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: #f5f5f5;
+  font-family: ${geo_regular.style.fontFamily};
+  font-size: 20px;
+`;
+export const ModalContentChar = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: #f5f5f5;
+  font-family: ${geo_regular.style.fontFamily};
+  font-size: 20px;
+`;
+export const GroupImgs = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.25rem;
+  overflow-y: auto;
+  max-height: 520px;
+`;
+export const Close = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+  img {
+    border-radius: 100%;
+  }
+  :active {
+    background-color: #1da0ba;
+  }
+`;

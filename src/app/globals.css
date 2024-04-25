@@ -7,3 +7,19 @@
 body {
   height: 100vh;
 }
+
+::-webkit-scrollbar {
+  width: 5px; /* largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: #272c3c; /* cor de fundo da área de rastreamento */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1da0ba; /* cor do controle deslizante */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* cor do controle deslizante quando passa o mouse por cima */
+}

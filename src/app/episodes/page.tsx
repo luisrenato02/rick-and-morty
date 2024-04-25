@@ -7,13 +7,30 @@ import LoadingScreen from "../Components/Loader";
 import { Title } from "../Components/Titles";
 import { BtnPrevNext } from "../Components/BtnPrevNext";
 import { Navbar } from "../Components/Navbar";
+import { Modal } from "../Components/Modal";
+import { Episode } from "../interfaces/episodes";
+import Image from "next/image";
+import { Character, initialCharacter } from "../interfaces/character";
+import { CardCharacter } from "../Components/CardCharacter";
+import close from "@/../public/close.svg";
 
 export default function Episodes() {
   const [page, setPage] = useState(`https://rickandmortyapi.com/api/episode`);
-  const { getEpisodes, prevPage, nextPage } = useEpisodes(page);
+  const [openModal, setOpenModal] = useState(false);
+  const [episode, setEpisode] = useState<Episode>();
+  const [openModalChar, setOpenModalChar] = useState(false);
+  const [characterModal, setCharacterModal] =
+    useState<Character>(initialCharacter);
+  const { getEpisodes, prevPage, nextPage, getCharactersImg, characters } =
+    useEpisodes(page);
   const { data, isLoading } = useQuery({
     queryKey: [page],
     queryFn: () => getEpisodes(),
+  });
+
+  const { isLoading: isLoadingImg } = useQuery({
+    queryKey: [episode?.characters],
+    queryFn: () => getCharactersImg(episode?.characters || []),
   });
 
   const pageNumber = (url: string) => {
@@ -25,7 +42,12 @@ export default function Episodes() {
     }
   };
 
-  return isLoading ? (
+  const openModalEpisode = (episode: Episode) => {
+    setEpisode(episode);
+    setOpenModal(true);
+  };
+
+  return isLoading && isLoadingImg ? (
     <LoadingScreen />
   ) : (
     <>
@@ -34,12 +56,15 @@ export default function Episodes() {
         <Title
           title="Episodes"
           page={pageNumber(page)}
-          totalpage={String(data.info.pages)}
+          totalpage={String(data?.info?.pages) ?? 0}
         />
         <S.GroupCards>
           {data &&
             data.results.map((episode: any) => (
-              <S.Card key={episode.id}>
+              <S.Card
+                key={episode.id}
+                onClick={() => openModalEpisode(episode)}
+              >
                 <h3>{episode.id}</h3>
                 <p>{episode.name}</p>
                 <p>{episode.episode}</p>
@@ -52,8 +77,37 @@ export default function Episodes() {
           nextPage={nextPage}
           setPage={setPage}
           page={pageNumber(page)}
-          totalPage={String(data.info.pages)}
+          totalPage={String(data?.info?.pages)}
         />
+        <Modal open={openModal} onClose={() => setOpenModal(false)}>
+          <S.ModalContent>
+            <h1>{episode?.name}</h1>
+            <p>{episode?.episode}</p>
+            <p>{episode?.air_date}</p>
+            <S.GroupImgs>
+              {characters.map((character: any) => (
+                <Image
+                  onClick={() => {
+                    setOpenModalChar(true), setCharacterModal(character ?? {});
+                  }}
+                  key={character?.id}
+                  src={character?.image}
+                  alt={character?.name}
+                  width={100}
+                  height={100}
+                />
+              ))}
+            </S.GroupImgs>
+          </S.ModalContent>
+        </Modal>
+        <Modal open={openModalChar} onClose={() => setOpenModalChar(false)}>
+          <S.ModalContentChar>
+            <S.Close onClick={() => setOpenModalChar(false)}>
+              <Image src={close} alt={"close"} width={30} height={30} />
+            </S.Close>
+            <CardCharacter character={characterModal} />
+          </S.ModalContentChar>
+        </Modal>
       </S.Wrapper>
     </>
   );

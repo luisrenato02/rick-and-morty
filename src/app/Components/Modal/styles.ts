@@ -10,8 +10,7 @@ export const Modal = styled.div<ModalProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;
-    width: 500px;
+
     position: fixed;
     left: 50%;
     top: 50%;
