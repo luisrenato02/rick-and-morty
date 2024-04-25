@@ -27,3 +27,24 @@ export const Ul = styled.ul`
     color: #f5f5f5;
   }
 `;
+export const Hamburg = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+export const WrapperModal = styled.div`
+  display: flex;
+  padding: 5rem;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  :hover {
+    cursor: pointer;
+    color: #147082;
+  }
+  p {
+    color: #f5f5f5;
+  }
+`;
