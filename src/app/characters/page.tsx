@@ -8,6 +8,7 @@ import * as S from "./styles";
 import LoadingScreen from "../Components/Loader";
 import { BtnPrevNext } from "../Components/BtnPrevNext";
 import { Title } from "../Components/Titles";
+import { Navbar } from "../Components/Navbar";
 
 export default function Characters() {
   const [page, setPage] = useState(`https://rickandmortyapi.com/api/character`);
@@ -31,6 +32,7 @@ export default function Characters() {
     <LoadingScreen />
   ) : (
     <>
+      <Navbar />
       <S.Wrapper>
         <Title
           title="Characters"
