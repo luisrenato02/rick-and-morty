@@ -10,7 +10,6 @@ export const Modal = styled.div<ModalProps>`
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: fixed;
     left: 50%;
     top: 50%;
@@ -27,6 +26,28 @@ export const Modal = styled.div<ModalProps>`
     }
   `}
 `;
+export const Close = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  cursor: pointer;
+  img {
+    border-radius: 100%;
+  }
+  :active {
+    background-color: #1da0ba;
+  }
+`;
+
+export const ModalContentChar = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: #f5f5f5;
+  font-size: 20px;
+`;
+
 export const Background = styled.div`
   display: flex;
   position: fixed;

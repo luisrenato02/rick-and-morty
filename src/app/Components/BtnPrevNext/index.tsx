@@ -1,15 +1,15 @@
 import * as S from "./styles";
 interface BtnPrevNextProps {
-  prevPage: string;
-  nextPage: string;
+  prevpage: string;
+  nextpage: string;
   setPage: (value: string) => void;
   page: string;
   totalPage: string;
 }
 
 export const BtnPrevNext = ({
-  prevPage,
-  nextPage,
+  prevpage,
+  nextpage,
   setPage,
   page,
   totalPage,
@@ -17,10 +17,10 @@ export const BtnPrevNext = ({
   return (
     <S.GroupButtons>
       <S.Button
-        prevPage={prevPage}
-        nextPage={nextPage}
+        prevpage={prevpage}
+        nextpage={nextpage}
         type="prev"
-        onClick={() => prevPage && setPage(prevPage)}
+        onClick={() => prevpage && setPage(prevpage)}
       >
         ◀
       </S.Button>
@@ -28,10 +28,10 @@ export const BtnPrevNext = ({
         {page ? page : 1}/{totalPage}
       </span>
       <S.Button
-        prevPage={prevPage}
-        nextPage={nextPage}
+        prevpage={prevpage}
+        nextpage={nextpage}
         type="next"
-        onClick={() => nextPage && setPage(nextPage)}
+        onClick={() => nextpage && setPage(nextpage)}
       >
         ▶
       </S.Button>

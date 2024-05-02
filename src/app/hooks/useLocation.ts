@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useAxiosContext } from "./useAxios";
-import { Character } from "../interfaces/character";
 
-export const useEpisodes = (page: string) => {
-  const axios = useAxiosContext("episode");
+export const useLocations = (page: string) => {
+  const axios = useAxiosContext("location");
   const [nextpage, setnextpage] = useState("");
   const [prevpage, setprevpage] = useState("");
   const [characters, setCharacters] = useState<any[]>([]);
 
-  const getEpisodes = async () => {
+  const getLocations = async () => {
     try {
       const response = await axios.get(page);
       setprevpage(response.data.info.prev);
@@ -18,10 +17,10 @@ export const useEpisodes = (page: string) => {
       console.error(error);
     }
   };
-  const getCharactersImg = async (episodes: string[]) => {
-    episodes.map(async (episode) => {
+  const getCharactersImg = async (locations: string[]) => {
+    locations.map(async (location) => {
       try {
-        const response = await axios.get(episode);
+        const response = await axios.get(location);
         setCharacters((prev: any) => [...prev, response.data]);
         return response.data;
       } catch (error) {
@@ -32,5 +31,5 @@ export const useEpisodes = (page: string) => {
     return characters;
   };
 
-  return { getEpisodes, getCharactersImg, nextpage, prevpage, characters };
+  return { getLocations, getCharactersImg, nextpage, prevpage, characters };
 };

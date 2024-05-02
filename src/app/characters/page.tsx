@@ -13,7 +13,7 @@ import { Navbar } from "../Components/Navbar";
 export default function Characters() {
   const [page, setPage] = useState(`https://rickandmortyapi.com/api/character`);
 
-  const { getCharacters, nextPage, prevPage } = useCharacters(page);
+  const { getCharacters, nextpage, prevpage } = useCharacters(page);
 
   const { data, isLoading } = useQuery({
     queryKey: [page],
@@ -47,8 +47,8 @@ export default function Characters() {
             ))}
         </S.GroupCards>
         <BtnPrevNext
-          prevPage={prevPage}
-          nextPage={nextPage}
+          prevpage={prevpage}
+          nextpage={nextpage}
           setPage={setPage}
           page={pageNumber(page)}
           totalPage={String(data?.info?.pages)}

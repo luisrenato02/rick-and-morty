@@ -49,6 +49,7 @@ export const Infos = styled.div`
 export const Status = styled.div<StatusProps>`
   ${({ status }) => css`
     margin-left: 5px;
+    margin-right: 5px;
     width: 15px;
     height: 15px;
     border-radius: 100%;

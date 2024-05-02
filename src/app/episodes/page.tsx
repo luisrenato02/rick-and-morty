@@ -21,7 +21,7 @@ export default function Episodes() {
   const [openModalChar, setOpenModalChar] = useState(false);
   const [characterModal, setCharacterModal] =
     useState<Character>(initialCharacter);
-  const { getEpisodes, prevPage, nextPage, getCharactersImg, characters } =
+  const { getEpisodes, prevpage, nextpage, getCharactersImg, characters } =
     useEpisodes(page);
   const { data, isLoading } = useQuery({
     queryKey: [page],
@@ -73,8 +73,8 @@ export default function Episodes() {
             ))}
         </S.GroupCards>
         <BtnPrevNext
-          prevPage={prevPage}
-          nextPage={nextPage}
+          prevpage={prevpage}
+          nextpage={nextpage}
           setPage={setPage}
           page={pageNumber(page)}
           totalPage={String(data?.info?.pages)}
@@ -101,12 +101,7 @@ export default function Episodes() {
           </S.ModalContent>
         </Modal>
         <Modal open={openModalChar} onClose={() => setOpenModalChar(false)}>
-          <S.ModalContentChar>
-            <S.Close onClick={() => setOpenModalChar(false)}>
-              <Image src={close} alt={"close"} width={30} height={30} />
-            </S.Close>
-            <CardCharacter character={characterModal} />
-          </S.ModalContentChar>
+          <CardCharacter character={characterModal} />
         </Modal>
       </S.Wrapper>
     </>

@@ -4,8 +4,8 @@ const geo_regular = localFont({
   src: "../../assets/Geo-Regular.ttf",
 });
 interface BtnProps {
-  nextPage: string;
-  prevPage: string;
+  nextpage: string;
+  prevpage: string;
 
   type: "next" | "prev";
 }
@@ -32,7 +32,7 @@ export const GroupButtons = styled.div`
 `;
 
 export const Button = styled.div<BtnProps>`
-  ${({ nextPage, prevPage, type }) => css`
+  ${({ nextpage, prevpage, type }) => css`
     display: flex;
     border-radius: 10px;
     justify-content: center;
@@ -40,10 +40,10 @@ export const Button = styled.div<BtnProps>`
     width: 200px;
     height: 50px;
     background-color: ${type === "prev"
-      ? prevPage === null
+      ? prevpage === null
         ? "gray"
         : "#1da0ba"
-      : nextPage === null
+      : nextpage === null
       ? "gray"
       : "#1da0ba"};
     color: #f5f5f5;
