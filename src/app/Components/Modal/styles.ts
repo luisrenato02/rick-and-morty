@@ -2,12 +2,16 @@ import styled, { css } from "styled-components";
 export interface ModalProps {
   open: boolean;
 }
+export interface ModalCard {
+  card: boolean;
+}
 
 export const Modal = styled.div<ModalProps>`
   ${({ open }) => css`
     background-size: cover;
     background-position: center;
     display: flex;
+    border: 1px solid #1da0ba;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -39,13 +43,19 @@ export const Close = styled.div`
   }
 `;
 
-export const ModalContentChar = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  color: #f5f5f5;
-  font-size: 20px;
+export const ModalWrapper = styled.div<ModalCard>`
+  ${({ card }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: #f5f5f5;
+    font-size: 20px;
+    @media (max-width: 700px) {
+      width: ${card ? "100%" : "90vw"};
+      height: ${card ? "100%" : "90vh"};
+    }
+  `}
 `;
 
 export const Background = styled.div`

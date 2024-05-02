@@ -33,16 +33,16 @@ export const Navbar = () => {
       )}
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         <S.WrapperModal>
-          <Link href="/">
+          <Link href="/" onClick={() => setOpenModal(false)}>
             <p>Home</p>
           </Link>
-          <Link href="/characters">
+          <Link href="/characters" onClick={() => setOpenModal(false)}>
             <p>Characters</p>
           </Link>
-          <Link href="/episodes">
+          <Link href="/episodes" onClick={() => setOpenModal(false)}>
             <p>Episodes</p>
           </Link>
-          <Link href="/locations">
+          <Link href="/locations" onClick={() => setOpenModal(false)}>
             <p>Locations</p>
           </Link>
         </S.WrapperModal>

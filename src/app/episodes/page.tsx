@@ -88,7 +88,10 @@ export default function Episodes() {
               {characters.map((character: any) => (
                 <Image
                   onClick={() => {
-                    setOpenModalChar(true), setCharacterModal(character ?? {});
+                    openModalChar
+                      ? setOpenModalChar(false)
+                      : setOpenModalChar(true),
+                      setCharacterModal(character ?? {});
                   }}
                   key={character?.id}
                   src={character?.image}
@@ -100,7 +103,11 @@ export default function Episodes() {
             </S.GroupImgs>
           </S.ModalContent>
         </Modal>
-        <Modal open={openModalChar} onClose={() => setOpenModalChar(false)}>
+        <Modal
+          open={openModalChar}
+          onClose={() => setOpenModalChar(false)}
+          card={true}
+        >
           <CardCharacter character={characterModal} />
         </Modal>
       </S.Wrapper>

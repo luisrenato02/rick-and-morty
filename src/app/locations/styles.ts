@@ -32,6 +32,9 @@ export const Card = styled.div`
   color: #f5f5f5;
   font-family: ${geo_regular.style.fontFamily};
   font-size: 20px;
+  @media (max-width: 700px) {
+    width: 255px;
+  }
 `;
 export const ModalContent = styled.div`
   display: flex;
