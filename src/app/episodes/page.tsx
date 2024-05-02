@@ -51,7 +51,6 @@ export default function Episodes() {
     <LoadingScreen />
   ) : (
     <>
-      <Navbar />
       <S.Wrapper>
         <Title
           title="Episodes"

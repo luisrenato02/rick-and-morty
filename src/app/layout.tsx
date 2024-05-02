@@ -3,6 +3,8 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { ReactQueryClient } from "./ReactQueryClient";
 import StyledComponentsRegistry from "./providers";
+import { Footer } from "./Components/Footer";
+import { Navbar } from "./Components/Navbar";
 
 const getSchwifty = localFont({
   src: "./assets/get_schwifty.ttf",
@@ -22,7 +24,12 @@ export default function RootLayout({
     <html lang="en">
       <ReactQueryClient>
         <StyledComponentsRegistry>
-          <body className={getSchwifty.className}>{children}</body>
+          <body className={getSchwifty.className}>
+            <Navbar />
+
+            {children}
+            <Footer />
+          </body>
         </StyledComponentsRegistry>
       </ReactQueryClient>
     </html>

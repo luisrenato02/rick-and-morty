@@ -51,7 +51,6 @@ export default function Locations() {
     <LoadingScreen />
   ) : (
     <>
-      <Navbar />
       <S.Wrapper>
         <Title
           title="Episodes"
