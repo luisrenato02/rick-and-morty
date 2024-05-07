@@ -3,7 +3,7 @@ export interface ModalProps {
   open: boolean;
 }
 export interface ModalCard {
-  card: boolean;
+  card: string;
 }
 
 export const Modal = styled.div<ModalProps>`
@@ -52,8 +52,8 @@ export const ModalWrapper = styled.div<ModalCard>`
     color: #f5f5f5;
     font-size: 20px;
     @media (max-width: 700px) {
-      width: ${card ? "100%" : "90vw"};
-      height: ${card ? "100%" : "90vh"};
+      width: ${card === "true" ? "100%" : "90vw"};
+      height: ${card === "true" ? "100%" : "90vh"};
     }
   `}
 `;

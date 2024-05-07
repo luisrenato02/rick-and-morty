@@ -26,6 +26,9 @@ export const Ul = styled.ul`
     font-size: 26px;
     color: #f5f5f5;
   }
+  a {
+    text-decoration: none;
+  }
 `;
 export const Hamburg = styled.div`
   display: flex;

@@ -14,13 +14,17 @@ export const BtnPrevNext = ({
   page,
   totalPage,
 }: BtnPrevNextProps) => {
+  const handleSetPage = (value: string) => {
+    setPage(value);
+    window.scrollTo(0, 0);
+  };
   return (
     <S.GroupButtons>
       <S.Button
         prevpage={prevpage}
         nextpage={nextpage}
         type="prev"
-        onClick={() => prevpage && setPage(prevpage)}
+        onClick={() => prevpage && handleSetPage(prevpage)}
       >
         ◀
       </S.Button>
@@ -31,7 +35,7 @@ export const BtnPrevNext = ({
         prevpage={prevpage}
         nextpage={nextpage}
         type="next"
-        onClick={() => nextpage && setPage(nextpage)}
+        onClick={() => nextpage && handleSetPage(nextpage)}
       >
         ▶
       </S.Button>

@@ -78,7 +78,11 @@ export default function Episodes() {
           page={pageNumber(page)}
           totalPage={String(data?.info?.pages)}
         />
-        <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        <Modal
+          card={"false"}
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+        >
           <S.ModalContent>
             <h1>{episode?.name}</h1>
             <p>{episode?.episode}</p>
@@ -105,7 +109,7 @@ export default function Episodes() {
         <Modal
           open={openModalChar}
           onClose={() => setOpenModalChar(false)}
-          card={true}
+          card={"true"}
         >
           <CardCharacter character={characterModal} />
         </Modal>

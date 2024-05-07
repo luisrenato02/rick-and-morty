@@ -53,7 +53,7 @@ export default function Locations() {
     <>
       <S.Wrapper>
         <Title
-          title="Episodes"
+          title="Locations"
           page={pageNumber(page)}
           totalpage={String(data?.info?.pages) ?? 0}
         />
@@ -78,7 +78,11 @@ export default function Locations() {
           page={pageNumber(page)}
           totalPage={String(data?.info?.pages)}
         />
-        <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        <Modal
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+          card={"false"}
+        >
           <S.ModalContent>
             <h1>{location?.name}</h1>
             <p>Dimension: {location?.dimension}</p>
@@ -106,7 +110,7 @@ export default function Locations() {
         <Modal
           open={openModalChar}
           onClose={() => setOpenModalChar(false)}
-          card={true}
+          card={"true"}
         >
           <CardCharacter character={characterModal} />
         </Modal>

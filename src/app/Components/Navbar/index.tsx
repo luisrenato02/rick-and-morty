@@ -4,18 +4,24 @@ import Link from "next/link";
 import logo from "@/../public/logo.svg";
 import hamburguer from "@/../public/hamburguer.svg";
 import * as S from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "../Modal";
 
 export const Navbar = () => {
-  var wm = window.matchMedia("(max-width: 768px)");
+  const [wm, setWm] = useState<MediaQueryList>();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      var win = window.matchMedia("(max-width: 768px)");
+      setWm(win);
+    }
+  }, []);
   const [openModal, setOpenModal] = useState(false);
   return (
     <S.Navbar>
       <Link href="/">
         <Image width={60} height={60} src={logo} alt={"home"} />
       </Link>
-      {wm.matches ? (
+      {wm?.matches ? (
         <S.Hamburg onClick={() => setOpenModal(true)}>
           <Image width={30} height={30} src={hamburguer} alt={"home"} />
         </S.Hamburg>
@@ -32,7 +38,11 @@ export const Navbar = () => {
           </Link>
         </S.Ul>
       )}
-      <Modal open={openModal} onClose={() => setOpenModal(false)}>
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        card={"false"}
+      >
         <S.WrapperModal>
           <Link href="/" onClick={() => setOpenModal(false)}>
             <p>Home</p>
